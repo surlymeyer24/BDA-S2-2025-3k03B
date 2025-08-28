@@ -13,5 +13,19 @@ public class Mascota {
         humor = humor;
     }
 
-    public comer
+    public boolean ingesta(String tipo) {
+        if (tipo.equals("comer")) {
+            energia *= 0.10;
+            humor += 1;
+            return true;
+        } else  if (tipo.equals("beber")){
+            energia *= 0.05;
+            humor += 1;
+            return true;
+        } else {
+            String mensaje;
+            mensaje = "Tipo de ingesta no valido";
+            return false;
+        }
+    }
 }
