@@ -13,5 +13,5 @@ public class Mascota {
         humor = humor;
     }
 
-    public comer
+    
 }
