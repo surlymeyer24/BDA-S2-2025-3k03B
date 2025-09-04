@@ -3,7 +3,7 @@ package ar.edu.utnfc.backend.modelo;
 public class Mascota {
     // Atributos
     private String nombre;
-    private int energia;
+    private float energia;
     private int humor;
 
     // Constructor
@@ -13,19 +13,27 @@ public class Mascota {
         humor = humor;
     }
 
-    public boolean ingesta(String tipo) {
-        if (tipo.equals("comer")) {
-            energia *= 0.10;
-            humor += 1;
-            return true;
-        } else if (tipo.equals("beber")) {
-            energia *= 0.05;
-            humor += 1;
-            return true;
-        } else {
-            String mensaje;
-            mensaje = "Tipo de ingesta no valido";
-            return false;
-        }
+    public boolean comer() {
+        energia += energia * 0.10;
+        humor += 1;
+        return true;
+    }
+
+    public boolean beber() {
+        energia += energia * 0.05;
+        humor += 1;
+        return true;
+    }
+
+    public boolean correr() {
+        energia *=  0.35;
+        humor -= 2;
+        return true;
+    }
+
+    public boolean saltar() {
+        energia *= 0.15;
+        humor -= 2;
+        return true;
     }
 }
