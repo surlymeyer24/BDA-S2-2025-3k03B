@@ -3,14 +3,15 @@ package ar.edu.utn.frc.backend;
 import java.io.FileNotFoundException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.Set;
 
-import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -111,10 +112,16 @@ public class CollectionTest {
 	public void devuelveLaCantidadMarcasQueVendanSedanes() throws FileNotFoundException {
 
 		List<Auto> autos = cargarListaDeAuto();
-
 		Set<String> resultado = Collection.obtenerLasMarcasQueVendanSedanes(autos);
 
-		assertArrayEquals(new String[] { "Acura", "Audi", "Alfa Romeo", "BMW", "Bentley" }, resultado.toArray());
+		 // Convertir Set a lista ordenada para comparación
+		List<String> resultadoOrdenado = new ArrayList<>(resultado);
+		Collections.sort(resultadoOrdenado);
+
+		List<String> esperado = Arrays.asList("Acura", "Alfa Romeo", "Audi", "BMW", "Bentley");
+		Collections.sort(esperado);
+    
+		assertEquals(esperado, resultadoOrdenado);
 	}
 
 	@Test

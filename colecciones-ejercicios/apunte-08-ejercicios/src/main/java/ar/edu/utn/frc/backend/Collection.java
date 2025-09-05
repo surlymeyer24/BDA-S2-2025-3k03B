@@ -88,6 +88,12 @@ public class Collection {
 	 * @return map con la cantidad de autos por año
 	 */
 	public static Map<Integer, Integer> obtenerCantidadDeAutosPorAnio(List<Auto> autos) {
-		return Collections.emptyMap();
+		Map<Integer, Integer> contadorPorAnio = new HashMap<>();
+
+		for (Auto auto : autos) {
+			int anio = auto.getAnio();
+			contadorPorAnio.put(anio, contadorPorAnio.getOrDefault(anio, 0) + 1);
+		}
+		return contadorPorAnio;
 	}
 }
